@@ -14,9 +14,13 @@ const userSchema = new Schema(
       unique: true,
       match: [/.+@.+\..+/, "Must use a valid email address"],
     },
-    thoughts: [{ type: `Schema.Types.ObjectId`, ref: `Thought` }],
+    thoughts: [{ 
+      type: Schema.Types.ObjectId,
+       ref: "Thought" }],
 
-    friends: [{ type: `Schema.Types.ObjectId`, ref: `Friend` }],
+    friends: [{ 
+      type: Schema.Types.ObjectId, 
+      ref: "Friend" }],
   },
 
   {
@@ -34,6 +38,6 @@ userSchema
   });
 
 // Initialize our User model
-const User = model("user", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
