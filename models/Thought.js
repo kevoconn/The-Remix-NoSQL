@@ -1,5 +1,5 @@
-const { Schema } = require('mongoose');
-
+const { Schema, model } = require('mongoose');
+const reactionSchema = require('./Reaction');
 
 // Schema to create thought model
 const thoughtSchema = new Schema(
@@ -37,6 +37,13 @@ reactionCount: {
   });
 }
 
-const Student = model('student', studentSchema);
+const Thought = model("Thought", thoughtSchema);
 
-module.exports = Student;
+module.exports = Thought;
+
+// Path: models\Reaction.js
+// Compare this snippet from models\User.js:  
+// const { Schema, model } = require("mongoose");
+//
+// const userSchema = new Schema(
+
