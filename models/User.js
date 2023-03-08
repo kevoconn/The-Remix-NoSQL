@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    userName: {
+    username: {
       type: String,
       required: true,
       unique: true,
@@ -14,13 +14,19 @@ const userSchema = new Schema(
       unique: true,
       match: [/.+@.+\..+/, "Must use a valid email address"],
     },
-    thoughts: [{ 
-      type: Schema.Types.ObjectId,
-       ref: "Thought" }],
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
+      },
+    ],
 
-    friends: [{ 
-      type: Schema.Types.ObjectId, 
-      ref: "Friend" }],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Friend",
+      },
+    ],
   },
 
   {
@@ -31,11 +37,9 @@ const userSchema = new Schema(
   }
 );
 
-userSchema
-  .virtual("friendCount")
-  .get(function () {
-    return this.friends.length;
-  });
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
 
 // Initialize our User model
 const User = model("User", userSchema);
